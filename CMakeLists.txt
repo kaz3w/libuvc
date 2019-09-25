@@ -11,8 +11,9 @@ if (NOT CMAKE_BUILD_TARGET)
   set(CMAKE_BUILD_TARGET "Both" CACHE STRING "" FORCE)
 endif()
 
-option(BUILD_EXAMPLE "Build example program" OFF)
-option(BUILD_TEST "Build test program" OFF)
+option(BUILD_EXAMPLE "Build example program" ON)
+option(BUILD_EXAMPLE_WRITE_JPEG "Build example-write-jpeg program" ON)
+option(BUILD_TEST "Build test program" ON)
 
 set(libuvc_VERSION_MAJOR 0)
 set(libuvc_VERSION_MINOR 0)
@@ -117,6 +118,13 @@ if(BUILD_EXAMPLE)
   add_executable(example src/example.c)
   target_link_libraries(example uvc pthread)
 endif()
+
+if(BUILD_EXAMPLE_WRITE_JPEG)
+  add_executable(example-write-jpeg src/example-write-jpeg.c)
+  target_link_libraries(example-write-jpeg uvc pthread jpeg)
+endif()
+
+
 
 if(BUILD_TEST)
 
