@@ -8,6 +8,10 @@ void cb(uvc_frame_t *frame, void *ptr) {
   uvc_frame_t *bgr;
   uvc_error_t ret;
 
+  
+
+  printf("UVC CB: w[%d] h[%d]\n", bgr->width, bgr->height );
+
   /* We'll convert the image from YUV/JPEG to BGR, so allocate space */
   bgr = uvc_allocate_frame(frame->width * frame->height * 3);
   if (!bgr) {
