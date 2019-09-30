@@ -1,2 +1,4 @@
 # Build directory (recommended location)
 build/
+_build/
+*.swp
